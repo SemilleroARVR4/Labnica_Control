@@ -15,7 +15,7 @@ float errorAnt = 0;
 
 
 float kp = 1;//1              //Constante proporcional
-float ki = 0.1;//0.1
+float ki = 0.05;//0.05
 float kd = 0.01;//0.01
 
 float tiempo_Ant = 0;       //Tiempo Anterior
