@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Prueba1 : MonoBehaviour
+public class Ball_and_Beam : MonoBehaviour
 {
     public string[] dataArray;
 
