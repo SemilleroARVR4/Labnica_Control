@@ -9,7 +9,14 @@ float distancia_Des = 50;   //Distancia_Deseada
 float ang = 0;              //Angulo
 
 float error = 0;            //Error
-float kp = -1;              //Constante proporcional
+float errorAcum = 0;
+float errorAnt = 0;
+  
+
+
+float kp = 5;//1              //Constante proporcional
+float ki = 0.5;//0.1
+float kd = 0.01;//0.01
 
 float tiempo_Ant = 0;       //Tiempo Anterior
 float tiempo_Act = 0;       //Tiempo Actual
@@ -54,16 +61,20 @@ void loop() {
 
 void SendData()
 { 
+
   error = distancia_Des - distance;     
-  ang = -kp * error;
+  errorAcum += error*(h/1000);
+ 
+  ang = kp * error + ki * errorAcum + kd * ((error - errorAnt) / (h/1000));
+  
   ang = MapFloat(ang,-50,50,-15,15);
   ang = constrain(ang,-15,15);
 
   Serial.print(ang);
   Serial.print('a');
   Serial.println(distance);
+  errorAnt = error;
 }
-
 
 void serialEvent(){
   while(Serial.available()){

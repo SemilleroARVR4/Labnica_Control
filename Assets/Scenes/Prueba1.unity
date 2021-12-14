@@ -356,7 +356,7 @@ MonoBehaviour:
   mTextDistanciaActual: {fileID: 887409925}
   mTextAngulo: {fileID: 1412417479}
   mTextDistancia2: {fileID: 236769737}
-  velocidad: 5
+  velocidad: 25
 --- !u!114 &105551579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1380,7 +1380,7 @@ Rigidbody:
   m_GameObject: {fileID: 1721468993}
   serializedVersion: 2
   m_Mass: 0.5
-  m_Drag: 0
+  m_Drag: 0.1
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -1457,7 +1457,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1721468993}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 15, y: 12.98, z: 0}
+  m_LocalPosition: {x: 15, y: 13.2, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
