@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class Ball_and_Beam : MonoBehaviour
 {
     public string[] dataArray;
-
     public float angulo;
     //public float distancia;
     public float distanciaUnity;
