@@ -9,7 +9,7 @@ public class PID : MonoBehaviour
     GameObject sensorUltrasonido;
 
     float y = 0f;                //Distancia_Actual
-    float r = 50f;               //Distancia_Deseada 
+    public float r = 50f;               //Distancia_Deseada 
     public float u = 0f;                //Angulo
 
     float e = 0f;            //Error
@@ -51,9 +51,8 @@ public class PID : MonoBehaviour
             eAcum += e * h;
 
             u = kp * e + ki * eAcum + kd * ((e - eAnte) / h);
-
-            u = Remap(u, -50, -15, 50, 15);
-            //u = Constrain(u, -15, 15);
+            u = Constrain(u, -100, 100);
+            u = Remap(u, -100, -45, 100, 45);
             Debug.Log("u = " + u);
         }
     }
