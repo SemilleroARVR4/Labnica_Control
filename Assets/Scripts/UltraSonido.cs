@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ultraSonido : MonoBehaviour
+public class UltraSonido : MonoBehaviour
 {
     public RaycastHit hit;
 

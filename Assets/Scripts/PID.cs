@@ -24,8 +24,6 @@ public class PID : MonoBehaviour
     float tActu = 0f;       //Tiempo Actual
     public float h = 0.01f;//200          //Tiempo de muestreo
 
-    int longitud_Base = 30;     //Distancia maxima que puede alcanzar la esfera.
-
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +40,7 @@ public class PID : MonoBehaviour
             //Debug.Log(tAnte);
             Debug.Log("r = " + r);
 
-            y = sensorUltrasonido.GetComponent<ultraSonido>().hit.distance;
+            y = sensorUltrasonido.GetComponent<UltraSonido>().hit.distance;
             y = Remap(y, 0, 30, 0, 100);
             Debug.Log("y = " + y);
 
