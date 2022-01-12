@@ -40,7 +40,7 @@ public class PID : MonoBehaviour
             //Debug.Log(tAnte);
             Debug.Log("r = " + r);
 
-            y = sensorUltrasonido.GetComponent<UltraSonido>().hit.distance;
+            y = sensorUltrasonido.GetComponent<Sensor>().hit.distance;
             y = Remap(y, 0, 30, 0, 100);
             Debug.Log("y = " + y);
 

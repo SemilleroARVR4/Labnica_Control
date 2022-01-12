@@ -13,14 +13,17 @@ public class Actuador : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log("Initial rotation: " + transform.rotation.eulerAngles);
+        Debug.Log("Initial local rotation: " + transform.localRotation.eulerAngles);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         angulo = motor.GetComponent<PID>().u;
-        Quaternion tar = Quaternion.Euler(0, 0, angulo);
-        transform.rotation = Quaternion.Slerp(transform.localRotation, tar, velocidad * Time.deltaTime);
+
+        Quaternion tar = Quaternion.Euler(90 - angulo, 90, -90);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, tar, velocidad * Time.deltaTime);
     }
 }
