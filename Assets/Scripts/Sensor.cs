@@ -6,8 +6,8 @@ using TMPro;
 public class Sensor : MonoBehaviour
 {
     public RaycastHit hit;
-    public GameObject distancePanel;
-    public TextMeshProUGUI distanceTxt;
+    //public GameObject distancePanel;
+    //public TextMeshProUGUI distanceTxt;
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +22,8 @@ public class Sensor : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            distancePanel.transform.localPosition = new Vector3(-15 + hit.distance/2 , 0, 0);
-            distanceTxt.text = "X = " + hit.distance.ToString();
+            //distancePanel.transform.localPosition = new Vector3(-15 + hit.distance/2 , 0, 0);
+            //distanceTxt.text = "X = " + hit.distance.ToString();
             //Debug.Log("Did Hit ... Distance: " + hit.distance);
         }
         else
