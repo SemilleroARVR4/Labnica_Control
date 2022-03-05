@@ -8,7 +8,7 @@ public class Actuator : MonoBehaviour
     GameObject motor;
 
     float angulo = 0.0f;
-    public float velocidad = 50.0f;
+    public float velocidad = 10.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,7 @@ public class Actuator : MonoBehaviour
     void FixedUpdate()
     {
         angulo = motor.GetComponent<Control_law>().u;
-        Quaternion tar = Quaternion.Euler(90 - angulo, 90, -90);
+        Quaternion tar = Quaternion.Euler(0, 0, 90 + angulo);
         transform.rotation = Quaternion.Slerp(transform.rotation, tar, velocidad * Time.deltaTime);
     }
 }
