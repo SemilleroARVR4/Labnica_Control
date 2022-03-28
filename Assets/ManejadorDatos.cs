@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ManejadorDatos : MonoBehaviour
 {
     [SerializeField]
-    private Control_law fuenteDatos;
+    private Control_LQR fuenteDatos;
     public Text SP;
     public Text Y;
 
@@ -19,8 +19,8 @@ public class ManejadorDatos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SP.text = Remap(fuenteDatos.r,0,100,0,30).ToString();
-        Y.text = Remap(fuenteDatos.y, 0, 100, 0, 30).ToString();
+        SP.text = Remap(fuenteDatos.r,0,1,0, 30.01978f).ToString();
+        Y.text = Remap(fuenteDatos.y, 0, 1, 0, 30.01978f).ToString();
     }
 
     public float Remap(float x, float x1, float x2, float y1, float y2)

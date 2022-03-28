@@ -20,8 +20,12 @@ public class Actuator : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        angulo = motor.GetComponent<Control_law>().u;
-        Quaternion tar = Quaternion.Euler(0, 0, 90 + angulo);
-        transform.rotation = Quaternion.Slerp(transform.rotation, tar, velocidad * Time.deltaTime);
+        if (Time.time > 3) 
+        {
+            angulo = motor.GetComponent<Control_LQR>().u;
+            //Debug.Log(90 + angulo);
+            Quaternion tar = Quaternion.Euler(90 + angulo, 90, -90);
+            transform.rotation = Quaternion.Slerp(transform.rotation, tar, velocidad * Time.deltaTime);
+        }
     }
 }
