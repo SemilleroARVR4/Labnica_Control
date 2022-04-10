@@ -13,12 +13,13 @@ MLc = canon(Controller,'modal')
 
 generateCode(MLc);
 
-X0 = [0 0 0 0 0]
+
+X0 = [0 0 0 0 0];
 
 %Momento de inercia
 [m,J,r,g]           = deal(0.1,0.025,0.01,9.807);  
 
-L = sqrt((2*J) /(m))
+L = sqrt((2*J) /(m));
 
 
 

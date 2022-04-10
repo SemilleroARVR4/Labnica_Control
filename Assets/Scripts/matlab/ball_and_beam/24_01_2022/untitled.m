@@ -32,7 +32,7 @@ L = dlqr(Ae,Be,Q,R)
 %X0 = [deg2rad(30) 0.5 0 0]
 X0 = [0 0.5 0 0]
 
-resultados = sim('Simul',5)
+resultados = sim('Simul1',5)
 
 setPoint = resultados.Ref.signals.values;
 pos = resultados.estados.signals.values(:,2);
