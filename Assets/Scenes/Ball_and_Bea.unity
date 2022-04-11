@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb27996dd317b943b3dd63bf4aad298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuenteDatos: {fileID: 1149128168}
+  fuenteDatos: {fileID: 0}
   SP: {fileID: 1701517573}
   Y: {fileID: 764097369}
 --- !u!4 &25317461

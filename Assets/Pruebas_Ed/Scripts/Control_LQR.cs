@@ -8,9 +8,9 @@ public class Control_LQR : MonoBehaviour
     [SerializeField]
     GameObject distanceSensor;
 
-    public float r = 0f;
+    public float r = 0.5f;
     public Slider setPoint;
-    public float y = 0.5f;
+    public float y = 0.0f;
     // esfuerzo de control 
     public float u = 0.00f;
 
@@ -54,14 +54,14 @@ public class Control_LQR : MonoBehaviour
 
         //Debug.Log("X1: " + x1 + " X2: " + x2 + " X3: " + x3 + " X4: " + x4 + " X5: " + x5);
         // ecuacion de estados 
-        x1next =  0.74f * x1 + 0.37f * x2 - 0.01f * r + 1.50f * y;
-        x2next = -0.37f * x1 + 0.74f * x2 - 5.36f * y;
-        x3next =  0.16f * x3 + 0.02f * r  -47.05f * y;
-        x4next =  0.29f * x4 + 0.01f * r  -45.10f * y;
-        x5next =  1.00f * x5 + 0.05f * r  - 0.05f * y;
+        x1next = 0.73f * x1 + 0.32f * x2 + 0.00f * x3 + 0.00f * x4 + 0.00f * x5 + 0.00f * r + 1.33f * y;
+        x2next = -0.32f * x1 + 0.73f * x2 + -0.00f * x3 + -0.00f * x4 + -0.00f * x5 + 0.00f * r + 2.80f * y;
+        x3next = 0.00f * x1 + -0.00f * x2 + -0.02f * x3 + 0.00f * x4 + 0.00f * x5 + 0.00f * r + -18.93f * y;
+        x4next = 0.00f * x1 + -0.00f * x2 + 0.00f * x3 + 0.18f * x4 + 0.00f * x5 + -0.00f * r + -19.32f * y;
+        x5next = 0.00f * x1 + -0.00f * x2 + 0.00f * x3 + 0.00f * x4 + 1.00f * x5 + 0.01f * r + -0.01f * y;
 
         // ecuacion de salida 
-        u = -0.45f * x1 + 0.71f * x2 -1.67f * x3 + 1.40f * x4;
+        u = 0.60f * x1 + -1.01f * x2 + -3.94f * x3 + 3.14f * x4 + -0.00f * x5;
 
         x1 = x1next;
         x2 = x2next;
@@ -95,4 +95,3 @@ public class Control_LQR : MonoBehaviour
         return value;
     }
 }
-
