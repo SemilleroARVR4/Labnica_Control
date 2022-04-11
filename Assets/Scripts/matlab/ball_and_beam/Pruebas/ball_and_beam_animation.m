@@ -11,7 +11,9 @@ YTriangle                       = 0.1*[-1; +1; -1];
 for i = 1:length(Q)
     % Rotation matrix
     Angle                           = Q(i);
+    disp(rad2deg(Angle))
     Rot                             = [cos(Angle), -sin(Angle); sin(Angle), cos(Angle)];
+    disp(Rot)
     % Rotated coordinates
     PosRectNew                      = Rot * PosRect;
     XRect                           = PosRectNew(1,:)';

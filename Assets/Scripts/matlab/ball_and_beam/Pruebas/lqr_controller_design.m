@@ -34,6 +34,7 @@ K               = dlqr(Process.A',Process.C',Qo,Ro)';
 %% Controller
 Lx              = L(:,1:nx);
 Lz              = L(:,nx+1:end);
+
 AControl        = [Process.A-K*Process.C-Process.B*Lx,  -Process.B*Lz; 
                                          zeros(nz,nx),  Reference.A];
 BControl        = [zeros(nx,nu),             K; 
