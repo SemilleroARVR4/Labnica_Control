@@ -65,22 +65,11 @@ public class Control_LQR : MonoBehaviour
         u = Constrain(u, -100, 100);
         u = Remap(u, -100, -45, 100, 45);
         */
-
         r = r - 0f;
         y = y - 0f;
 
         //Debug.Log("X1: " + x1 + " X2: " + x2 + " X3: " + x3 + " X4: " + x4 + " X5: " + x5);
         // ecuacion de estados 
-<<<<<<< HEAD:Assets/Scripts/Control_LQR.cs
-        x1next = 0.52f * x1 + 0.68f * x2 + 0.00f * x3 + 0.00f * x4 + 0.00f * x5 + -0.00f * r + 2.79f * y;
-        x2next = -0.68f * x1 + 0.52f * x2 + -0.00f * x3 + -0.00f * x4 + -0.00f * x5 + -0.00f * r + -3.12f * y;
-        x3next = 0.00f * x1 + -0.00f * x2 + -0.16f * x3 + 0.00f * x4 + 0.00f * x5 + 0.00f * r + -28.34f * y;
-        x4next = 0.00f * x1 + -0.00f * x2 + 0.00f * x3 + 0.02f * x4 + 0.00f * x5 + -0.00f * r + -24.80f * y;
-        x5next = 1.00f * x5 + 0.01f * r + -0.01f * y;
-
-        // ecuacion de salida 
-        u = -0.77f * x1 + 1.34f * x2 + -2.25f * x3 + 1.92f * x4 + -0.00f * x5;
-=======
         x1next = 0.73f * x1 + 0.32f * x2 + 0.00f * x3 + 0.00f * x4 + 0.00f * x5 + 0.00f * r + 1.33f * y;
         x2next = -0.32f * x1 + 0.73f * x2 + -0.00f * x3 + -0.00f * x4 + -0.00f * x5 + 0.00f * r + 2.80f * y;
         x3next = 0.00f * x1 + -0.00f * x2 + -0.02f * x3 + 0.00f * x4 + 0.00f * x5 + 0.00f * r + -18.93f * y;
@@ -89,7 +78,6 @@ public class Control_LQR : MonoBehaviour
 
         // ecuacion de salida 
         u = 0.60f * x1 + -1.01f * x2 + -3.94f * x3 + 3.14f * x4 + -0.00f * x5;
->>>>>>> dda033563bc145e23ebfa0616b9ecda62f8687ed:Assets/Pruebas_Ed/Scripts/Control_LQR.cs
 
         x1 = x1next;
         x2 = x2next;
