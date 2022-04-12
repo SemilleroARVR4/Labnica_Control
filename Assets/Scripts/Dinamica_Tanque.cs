@@ -24,20 +24,20 @@ public class Dinamica_Tanque : MonoBehaviour
         m_PosicionLiq = liquido.transform.localPosition;
 
 
-        y = (U * K - U * K * Mathf.Exp(-t/Tao)) / 10;
+        y = (U * K - U * K * Mathf.Exp(-t/Tao));
         print(y);
-        //float escalado = Remap(m_EscalaLiq.y,0f, 10f, 0f, 100f);
+        float escalado = Remap(y,0f, 2f, 0f, 10f);
 
-
-        ManejoContenido(y);
+        ManejoContenido(escalado);
+        print(escalado);
     }
 
     private void ManejoContenido(float escalado)
     {
         if (m_EscalaLiq.y <= m_TamañoTanque || m_EscalaLiq.y == 0)
         {
-            liquido.transform.localScale = new Vector3(m_EscalaLiq.x, m_EscalaLiq.y + escalado, m_EscalaLiq.z);
-            liquido.transform.localPosition = new Vector3(m_PosicionLiq.x, m_PosicionLiq.y + escalado , m_PosicionLiq.z);
+            liquido.transform.localScale = new Vector3(m_EscalaLiq.x, escalado, m_EscalaLiq.z);
+            liquido.transform.localPosition = new Vector3(m_PosicionLiq.x, -6 + escalado , m_PosicionLiq.z);
         }
     }
 
