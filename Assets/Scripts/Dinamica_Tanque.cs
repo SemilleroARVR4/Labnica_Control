@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class Dinamica_Tanque : MonoBehaviour
 {
-    public int U;
+    private float U;
     public int K;
     public int Tao;
     public float y;
     private float t;
 
     public GameObject liquido;
+    public Control_Law codigo_Control;
+    public GameObject particula_liquido;
+
     //Los parametros m_EscalaLiq y m_PosicionLiq son los que ayudan a generar la animación de un tanque con liquido.
     private Vector3 m_EscalaLiq;
     private Vector3 m_PosicionLiq;
@@ -22,23 +25,26 @@ public class Dinamica_Tanque : MonoBehaviour
         t = Time.time;
         m_EscalaLiq = liquido.transform.localScale;
         m_PosicionLiq = liquido.transform.localPosition;
-
+        U = codigo_Control.u;
 
         y = (U * K - U * K * Mathf.Exp(-t/Tao));
-        print(y);
-        float escalado = Remap(y,0f, 2f, 0f, 10f);
 
-        ManejoContenido(escalado);
-        print(escalado);
+        Manejo_Contenido(y);
+        Imprimir_Datos();
     }
 
-    private void ManejoContenido(float escalado)
+    private void Manejo_Contenido(float escalado)
     {
         if (m_EscalaLiq.y <= m_TamañoTanque || m_EscalaLiq.y == 0)
         {
             liquido.transform.localScale = new Vector3(m_EscalaLiq.x, escalado, m_EscalaLiq.z);
             liquido.transform.localPosition = new Vector3(m_PosicionLiq.x, -6 + escalado , m_PosicionLiq.z);
         }
+    }
+
+    public void Imprimir_Datos()
+    {
+        print("U =" + U + " Y = " + y);
     }
 
 
@@ -49,7 +55,5 @@ public class Dinamica_Tanque : MonoBehaviour
 
         return m * x + c;
     }
-
-
 
 }

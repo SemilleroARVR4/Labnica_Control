@@ -9,16 +9,16 @@ s = tf('s');
 r = 1/s;
 rz = c2d(ss(r),h,'zoh');
 % diseno controlador
-Controller = pid_design(G,'PID',9)
-% Controller = lqr_controller_design(Gz,rz,0.01);
-% MLc = canon(Controller,'modal');
-% % condiciones de simulacion
-% X0 = [0 0 0 0];
+%Controller = pid_design(G,'PID',9)
+ Controller = lqr_controller_design(Gz,rz,0.01);
+ MLc = canon(Controller,'modal');
+ % condiciones de simulacion
+ X0 = [0 0 0 0];
 % SP = 0.3;
-% % generador de codigo
+ % generador de codigo
 % generateCode(MLc);
-% % simulacion en simulink
-% out = sim('Simul_LQR',100);
+ % simulacion en simulink
+ out = sim('Simul_LQR',100);
 % % variables de simulink
 % teta = out.estados.signals.values(:,1);
 % x = out.estados.signals.values(:,2);
