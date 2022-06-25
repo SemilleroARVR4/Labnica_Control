@@ -7,14 +7,14 @@ public class Actuator : MonoBehaviour
     [SerializeField]
     GameObject motor;
 
-    float angulo = 0.0f;
     public float velocidad = 10.0f;
-
+    public float torque;
+    public Rigidbody rb;
+    public float turn = 1f;
     // Start is called before the first frame update
     void Start()
     {
-        //Debug.Log("Initial rotation: " + transform.rotation.eulerAngles);
-        //Debug.Log("Initial local rotation: " + transform.localRotation.eulerAngles);
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -22,10 +22,11 @@ public class Actuator : MonoBehaviour
     {
         if (Time.time > 3) 
         {
-            angulo = motor.GetComponent<Control_LQR>().u;
+            torque = motor.GetComponent<Control_LQR>().u;
             //Debug.Log(90 + angulo);
-            Quaternion tar = Quaternion.Euler(90 + angulo, 90, -90);
-            transform.rotation = Quaternion.Slerp(transform.rotation, tar, velocidad * Time.deltaTime);
+            rb.AddTorque(new Vector3 (0f,0f,1f) * torque * turn);
+            //Quaternion tar = Quaternion.Euler(90 + angulo, 90, -90);
+            //transform.rotation = Quaternion.Slerp(transform.rotation, tar, velocidad * Time.deltaTime);
         }
     }
 }

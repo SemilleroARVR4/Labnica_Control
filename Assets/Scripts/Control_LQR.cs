@@ -13,6 +13,7 @@ public class Control_LQR : MonoBehaviour
     public float y = 0.0f;
     // esfuerzo de control 
     public float u = 0.00f;
+    public float y2 = 0.00f;
 
     float x1next, x2next, x3next, x4next, x5next;
     float x1 = 0.0f, x2 = 0.0f, x3 = 0.0f, x4 = 0.0f, x5 = 0.0f;
@@ -33,18 +34,12 @@ public class Control_LQR : MonoBehaviour
         InvokeRepeating("Control_loop", 0, h);
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-
-    }
-
     void Control_loop()
     {
        // r = (setPoint.value)/10;
         //r = Remap(r, 0, 27.1f, 0, 1);
         Read_process_output();
-        Calculate_control(r, y);
+        Calculate_control(r, y , y2);
     }
 
     void Read_process_output()
@@ -54,7 +49,7 @@ public class Control_LQR : MonoBehaviour
         y = Remap(y, 0, 28.8f, -1, 1);
     }
 
-    void Calculate_control(float r, float y)
+    void Calculate_control(float r, float y, float y2)
     {
         /*
         float e = r - y;        
@@ -65,19 +60,20 @@ public class Control_LQR : MonoBehaviour
         u = Constrain(u, -100, 100);
         u = Remap(u, -100, -45, 100, 45);
         */
-        r = r - 0f;
-        y = y - 0f;
+        r  = r - 0f;
+        y  = y - 0f;
+        y2 = y2 - 0f;
 
         //Debug.Log("X1: " + x1 + " X2: " + x2 + " X3: " + x3 + " X4: " + x4 + " X5: " + x5);
         // ecuacion de estados 
-        x1next = 0.73f * x1 + 0.32f * x2 + 0.00f * x3 + 0.00f * x4 + 0.00f * x5 + 0.00f * r + 1.33f * y;
-        x2next = -0.32f * x1 + 0.73f * x2 + -0.00f * x3 + -0.00f * x4 + -0.00f * x5 + 0.00f * r + 2.80f * y;
-        x3next = 0.00f * x1 + -0.00f * x2 + -0.02f * x3 + 0.00f * x4 + 0.00f * x5 + 0.00f * r + -18.93f * y;
-        x4next = 0.00f * x1 + -0.00f * x2 + 0.00f * x3 + 0.18f * x4 + 0.00f * x5 + -0.00f * r + -19.32f * y;
-        x5next = 0.00f * x1 + -0.00f * x2 + 0.00f * x3 + 0.00f * x4 + 1.00f * x5 + 0.01f * r + -0.01f * y;
+        x1next = 0.9913f * x1 + 0f * x2 +    0f * x3 + 0f * x4 + 0f * x5 + -0.0008932f * r + 0.1118f * y + 0.008784f * y2;
+        x2next = 0f * x1 + 0.5728f * x2 + 0f * x3 + 0f * x4 + 0 * x5 + 0.002502f * r + -1.258f * y + 0.8431f * y2;
+        x3next = 0f * x1 + 0f * x2 + 0.03393f * x3 + 0f * x4 + 0f * x5 + 0.0001671f * r + -4.572f * y + 3.316f * y2;
+        x4next = 0f * x1 + 0f * x2 + 0f * x3 + 0.009809f * x4 + 0f * x5 + -3.804e-08f * r + 0.05136f * y + -5.067f * y2;
+        x5next = 0f * x1 + 0f * x2 + 0f * x3 + 0f * x4 + 1f * x5 + 0.06257f * r + 0f * y + -0.06257f * y2;
 
         // ecuacion de salida 
-        u = 0.60f * x1 + -1.01f * x2 + -3.94f * x3 + 3.14f * x4 + -0.00f * x5;
+        u = -0.007176f * x1 + -4.034f * x2 + 2.629f * x3 + -0.00162f * x4 + -0.004423f * x5;
 
         x1 = x1next;
         x2 = x2next;
@@ -86,8 +82,8 @@ public class Control_LQR : MonoBehaviour
         x5 = x5next;
 
         // Debug.Log(x1);
-       // u = (u * 180f) / 3.1416f;
-        Debug.Log((u * 180f) / 3.1416f);
+        // u = (u * 180f) / 3.1416f;
+        //Debug.Log((u * 180f) / 3.1416f);
         u = u > 25 ? 25 : u;
         u = u < -25 ? -25 : u;
         //Debug.Log(u);
